@@ -1,17 +1,14 @@
 <?php
 class Computer{
-    public $name;
-    function __construct()
+    function __toString()
     {
-        $this->setName();
+        return '对象无法转换为字符串，请尝试使用print_r';
     }
-
-    function getName(){
-        return $this->name;
-    }
-    function setName($name='lucy'){
-        $this->name=$name;
+    function __call($name, $arguments)
+    {
+        echo $name.'()不存在';
     }
 }
-$t=new Computer();
-echo $t->getName();
+$c=new Computer();
+echo $c;
+$c->go();
